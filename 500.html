@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <base href="/CafeBilling/">
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem('cafebilling_theme_v1');
+        if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme;
+      } catch {}
+    })();
+  </script>
+  <title>500 — CafeBilling</title>
+  <style>
+    :root{color-scheme:light;--bg:#f5f7fb;--surface:rgba(255,255,255,.86);--text:#172033;--muted:#718096;--line:#e6eaf0;--primary:#bb6b36;--navy:#101827;--glow:rgba(187,107,54,.13)}
+    [data-theme="dark"]{color-scheme:dark;--bg:#000;--surface:rgba(7,7,7,.92);--text:#f5f7fb;--muted:#9aa4b3;--line:#1c1c1c;--primary:#d58b58;--navy:#000;--glow:rgba(213,139,88,.08)}
+    *{box-sizing:border-box}html,body{min-height:100%;margin:0}body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 78% 12%,var(--glow),transparent 27%),var(--bg);color:var(--text);display:grid;place-items:center;padding:24px;overflow:hidden;transition:background .2s ease,color .2s ease}
+    .ambient{position:fixed;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:-1}.a{width:260px;height:260px;right:-50px;top:-40px;background:rgba(187,107,54,.07)}.b{width:300px;height:300px;left:-120px;bottom:-130px;background:rgba(66,119,231,.05)}
+    .card{width:min(920px,100%);background:var(--surface);border:1px solid var(--line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:32px;padding:44px;box-shadow:0 30px 80px rgba(0,0,0,.12);display:grid;grid-template-columns:1fr auto;gap:42px;align-items:center;animation:in .45s ease}
+    .eyebrow{font-size:10px;letter-spacing:.18em;font-weight:800;color:#9aa4b3}.code{font-size:92px;font-weight:800;letter-spacing:-.08em;line-height:.9;margin:10px 0;color:var(--navy)}h1{font-size:30px;letter-spacing:-.04em;margin:0 0 10px}p{font-size:13px;line-height:1.75;color:var(--muted);max-width:560px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:13px;padding:12px 16px;font-size:12px;font-weight:700}.primary{background:var(--navy);color:#fff}.secondary{background:transparent;color:var(--text);border:1px solid var(--line)}.hint{font-size:10px;color:#a2acba;margin-top:14px}
+    .illustration{width:250px;height:250px;border-radius:50%;background:radial-gradient(circle at 50% 50%,rgba(187,107,54,.09),transparent 62%),var(--surface);border:1px solid var(--line);display:grid;place-items:center;position:relative;box-shadow:inset 0 0 45px rgba(255,255,255,.03)}
+    .scene{position:relative;width:150px;height:150px}.cup{position:absolute;left:24px;top:54px;width:84px;height:66px;border-radius:14px 14px 26px 26px;background:#b76435;box-shadow:0 18px 30px rgba(187,107,54,.24)}.cup:before{content:"";position:absolute;width:34px;height:30px;border:9px solid #b76435;border-left:0;border-radius:0 20px 20px 0;right:-28px;top:12px}.liquid{position:absolute;left:9px;right:9px;top:8px;height:12px;border-radius:99px;background:#6e361c}.steam{position:absolute;width:7px;height:42px;border-left:3px solid #cdb0a0;left:36px;top:6px;transform:rotate(8deg)}.steam.two{left:57px;top:0;transform:rotate(-8deg)}.badge{position:absolute;right:-14px;bottom:18px;background:var(--navy);color:#fff;border-radius:999px;padding:8px 11px;font-size:9px;font-weight:800}
+    .lock{position:absolute;left:39px;top:46px;width:78px;height:64px;border-radius:13px;background:#b76435}.lock:before{content:"";position:absolute;left:20px;top:-29px;width:38px;height:38px;border:9px solid #b76435;border-bottom:0;border-radius:22px 22px 0 0}.lock:after{content:"";position:absolute;left:34px;top:25px;width:10px;height:19px;border-radius:99px;background:#f6e7d9}
+    .seat{position:absolute;left:31px;top:47px;width:90px;height:78px;border:10px solid #b76435;border-top-left-radius:22px;border-top-right-radius:22px;border-bottom:0}.seat:before{content:"";position:absolute;left:-1px;bottom:-16px;width:82px;height:10px;background:#b76435;border-radius:9px}.dot{position:absolute;width:13px;height:13px;border-radius:50%;background:#6e361c;left:38px;top:29px}.gear{position:absolute;left:37px;top:38px;width:78px;height:78px;border-radius:50%;border:18px dotted #b76435;box-shadow:0 0 0 7px rgba(187,107,54,.08)}.spark{position:absolute;width:11px;height:11px;background:#b76435;transform:rotate(45deg);right:12px;top:20px;border-radius:2px}.spark.two{left:8px;right:auto;top:106px}
+    @keyframes in{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}@media(max-width:720px){.card{grid-template-columns:1fr;padding:30px;gap:22px}.illustration{width:min(190px,58vw);height:min(190px,58vw);justify-self:center}.code{font-size:clamp(58px,18vw,70px)}}@media(max-width:430px){body{padding:12px}.card{padding:22px;border-radius:24px;gap:16px}.code{margin:6px 0;font-size:56px}h1{font-size:25px}p{font-size:12px}.actions{flex-direction:column}.actions a{width:100%}.illustration{width:min(165px,54vw);height:min(165px,54vw)}}
+  </style>
+</head>
+<body>
+  <div class="ambient a"></div><div class="ambient b"></div>
+  <main class="card">
+    <section>
+      <span class="eyebrow">CAFEBILLING / SERVER ERROR</span>
+      <div class="code">500</div>
+      <h1>The coffee machine had an unexpected moment.</h1>
+      <p>Terjadi kesalahan internal pada server. Coba kembali ke CafeBilling dan ulangi permintaan setelah sistem siap.</p>
+      <div class="actions"><a class="primary" href="./">Kembali ke CafeBilling</a><a class="secondary" href="https://github.com/ridhoae303/CafeBilling" target="_blank" rel="noopener">Lihat Repository</a></div>
+      <div class="hint">CafeBilling custom error page · 500</div>
+    </section>
+    <div class="illustration"><div class="scene"><div class="gear"></div><span class="spark"></span><span class="spark two"></span><span class="badge">500 / BREW FAILURE</span></div></div>
+  </main>
+</body>
+</html>

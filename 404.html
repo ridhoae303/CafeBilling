@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <base href="/CafeBilling/">
+  <script>
+    (() => {
+      try {
+        const theme = localStorage.getItem('cafebilling_theme_v1');
+        if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme;
+      } catch {}
+    })();
+  </script>
+  <title>404 — CafeBilling</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+  :root{--bg:#f5f7fb;--text:#172033;--muted:#718096;--line:#e6eaf0;--primary:#bb6b36;--navy:#101827}*{box-sizing:border-box}html,body{min-height:100%;margin:0}body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 78% 12%,rgba(187,107,54,.13),transparent 26%),radial-gradient(circle at 12% 92%,rgba(66,119,231,.08),transparent 30%),var(--bg);color:var(--text);display:grid;place-items:center;padding:24px;overflow:hidden}.ambient{position:fixed;border-radius:50%;filter:blur(80px);pointer-events:none}.a{width:260px;height:260px;right:-50px;top:-40px;background:rgba(187,107,54,.1)}.b{width:300px;height:300px;left:-120px;bottom:-130px;background:rgba(66,119,231,.08)}.card{width:min(860px,100%);background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.9);backdrop-filter:blur(18px);border-radius:32px;padding:44px;box-shadow:0 30px 80px rgba(17,24,39,.1);display:grid;grid-template-columns:1fr auto;gap:42px;align-items:center;animation:in .5s ease}.eyebrow{font-size:10px;letter-spacing:.18em;font-weight:800;color:#9aa4b3}.code{font-size:92px;font-weight:800;letter-spacing:-.08em;line-height:.9;margin:10px 0;color:var(--navy)}h1{font-size:30px;letter-spacing:-.04em;margin:0 0 10px}p{font-size:13px;line-height:1.75;color:var(--muted);max-width:560px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}a{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border-radius:13px;padding:12px 16px;font-size:12px;font-weight:700}.primary{background:var(--navy);color:#fff}.secondary{background:#fff;color:#596577;border:1px solid var(--line)}.illustration{width:250px;height:250px;border-radius:50%;background:linear-gradient(145deg,#f8eee7,#fff);border:1px solid #f0ddd0;display:grid;place-items:center;position:relative}.cup{width:86px;height:70px;border-radius:15px 15px 28px 28px;background:#c97743;position:relative;box-shadow:0 18px 30px rgba(187,107,54,.25)}.cup:before{content:"";position:absolute;width:34px;height:31px;border:9px solid #c97743;border-left:0;border-radius:0 20px 20px 0;right:-27px;top:13px}.coffee{position:absolute;left:9px;right:9px;top:8px;height:13px;border-radius:99px;background:#6e361c}.steam{position:absolute;width:7px;height:45px;border-radius:99px;border-left:3px solid #d6b09a;left:35px;top:-52px;transform:rotate(7deg)}.steam.two{left:57px;top:-58px;transform:rotate(-8deg)}.badge{position:absolute;right:20px;bottom:31px;background:#101827;color:#fff;border-radius:999px;padding:8px 11px;font-size:9px;font-weight:800}.hint{font-size:10px;color:#a2acba;margin-top:14px}@keyframes in{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}@media(max-width:720px){.card{grid-template-columns:1fr;padding:30px;gap:22px;width:min(860px,100%)}.illustration{width:min(190px,58vw);height:min(190px,58vw);justify-self:center}.code{font-size:clamp(58px,18vw,70px)}}@media(max-width:430px){body{padding:12px}.card{padding:22px;border-radius:24px;gap:16px}.code{margin:6px 0;font-size:56px}h1{font-size:25px}p{font-size:12px}.actions{flex-direction:column}.actions a{width:100%}.illustration{width:min(165px,54vw);height:min(165px,54vw)}}
+  </style>
+</head>
+<body>
+  <div class="ambient a"></div><div class="ambient b"></div>
+  <main class="card">
+    <section>
+      <span class="eyebrow">CAFEBILLING / PAGE NOT FOUND</span>
+      <div class="code">404</div>
+      <h1>Well… this page ordered coffee, but the cup is empty.</h1>
+      <p>The URL you opened does not exist in CafeBilling. The café is open, but this particular page never showed up for the order.</p>
+      <div class="actions"><a class="primary" href="./">Back to CafeBilling</a><a class="secondary" href="https://github.com/ridhoae303/CafeBilling" target="_blank" rel="noopener">View Repository</a></div>
+      <div class="hint">No scary browser default page. Just the CafeBilling UI, doing its thing.</div>
+    </section>
+    <div class="illustration"><div class="cup"><span class="coffee"></span><span class="steam"></span><span class="steam two"></span></div><span class="badge">404 / BREW MISSING</span></div>
+  </main>
+</body>
+</html>

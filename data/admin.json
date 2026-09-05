@@ -1,0 +1,6 @@
+{
+  "_comment": "Development note: password_sha256 stores the SHA-256 digest of the admin password.",
+  "username": "ridhoae303",
+  "password_sha256": "1778f1f0279d70ed1846283d2eb2ed57127457b118ac4a7b6106a9b209270a0d",
+  "role": "admin"
+}

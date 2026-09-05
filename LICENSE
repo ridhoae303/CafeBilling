@@ -1,0 +1,79 @@
+CafeBilling License
+Copyright (c) 2026 ridhoae303
+
+This license governs the use, modification, and distribution of CafeBilling ("Software"). The Software and its original source code, custom logic, original assets, documentation, and related project files are owned by ridhoae303 ("Copyright Holder"), unless a specific file or component states otherwise.
+
+1. PERMITTED USE
+
+You may use, copy, inspect, run, and modify the Software for personal, educational, testing, or private/internal purposes.
+
+You may keep modified copies for your own personal or private/internal use, provided that this license and the original copyright notice remain with the Software.
+
+2. RESTRICTIONS
+
+Without prior written permission from ridhoae303, you may not:
+
+- publish, upload, mirror, or otherwise redistribute the Software;
+- distribute, publish, or share modified, forked, patched, or derived versions;
+- place the Software or any substantial portion of its source code into another public repository, package, template, product, service, or application;
+- sell, resell, rent, lease, sublicense, license, or otherwise monetize the Software or any substantial portion of it;
+- use the Software or any substantial portion of it as the foundation for a commercial product, paid service, or competing public distribution;
+- include the Software in a download service, code marketplace, archive, dataset, SaaS platform, or similar distribution platform;
+- remove, alter, conceal, or replace the copyright notice or this license;
+- claim the original Software or substantial portions of its source code as your own work.
+
+Changing the project name, rearranging files, changing a small number of lines, or making minor cosmetic edits does not make a copy independent from the Software. Any work that contains a substantial portion of the original CafeBilling source code remains subject to this license.
+
+3. MODIFICATIONS AND DERIVATIVE WORKS
+
+Private or internal modifications are allowed.
+
+Public distribution of any modified version, fork, port, rewrite containing substantial original code, bundled version, or other derivative work requires prior written permission from ridhoae303.
+
+4. OWNERSHIP AND COPYRIGHT
+
+No ownership, copyright, trademark, or other intellectual property rights are transferred to you under this license.
+
+The following notice must remain intact where applicable:
+
+Copyright (c) 2026 ridhoae303
+
+You may not represent CafeBilling, its original code, or substantial portions of it as an original work created by you.
+
+5. THIRD-PARTY COMPONENTS
+
+This license applies only to material owned by ridhoae303.
+
+Third-party libraries, frameworks, packages, fonts, icons, images, services, and other external components may be subject to separate licenses or terms. Those separate licenses remain in effect and are not replaced by this license.
+
+6. WRITTEN PERMISSION
+
+Public distribution, commercial use, sublicensing, resale, or inclusion of substantial portions of the Software in another project requires prior written permission from ridhoae303.
+
+Permission is valid only when explicitly granted in writing by the Copyright Holder. Silence, lack of response, or informal assumptions do not constitute permission.
+
+7. TERMINATION
+
+Your rights under this license automatically terminate if you violate any of its terms.
+
+Upon termination, you must stop using and distributing the Software to the extent required by applicable law and this license. Provisions concerning ownership, restrictions, copyright, warranty, liability, and any other provisions that are intended by their nature to survive termination will remain in effect.
+
+8. DISCLAIMER OF WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, OR NON-INFRINGEMENT.
+
+YOU USE THE SOFTWARE AT YOUR OWN RISK.
+
+9. LIMITATION OF LIABILITY
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, RIDHOAE303 SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR OTHER DAMAGES ARISING OUT OF OR RELATING TO THE SOFTWARE, ITS USE, ITS DISTRIBUTION, OR THE INABILITY TO USE IT.
+
+10. INTERPRETATION
+
+This license is intentionally restrictive.
+
+Anything not expressly permitted by this license is not permitted unless ridhoae303 provides prior written permission.
+
+11. CONTACT AND PERMISSION
+
+For permission to publicly distribute, commercially use, sublicense, resell, or otherwise use the Software outside the rights granted above, contact the Copyright Holder, ridhoae303.

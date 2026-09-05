@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<base href="../"/>
+<script>window.CAFEBILLING_ADMIN_ROUTE = true;</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#0f172a" name="theme-color"/>
+<meta content="CafeBilling — lightweight café and minimarket POS simulation with no database." name="description"/>
+<script>
+    (() => {
+      try {
+        const theme = localStorage.getItem('cafebilling_theme_v1');
+        if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme;
+      } catch {}
+    })();
+  </script>
+<title>CafeBilling — Admin / Kasir</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="css/style.css?v=20260905-history-day-v6" rel="stylesheet"/>
+</head>
+<body class="is-user">
+<div class="ambient ambient-a"></div>
+<div class="ambient ambient-b"></div>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+<div class="brand">
+<div class="brand-mark"><i data-lucide="coffee"></i></div>
+<div>
+<div class="brand-name">CafeBilling</div>
+<div class="brand-sub">Point of Sale</div>
+</div>
+</div>
+<nav aria-label="Navigasi utama" class="nav-list">
+<button class="nav-item active" data-view="dashboard"><i data-lucide="layout-dashboard"></i><span>Dashboard</span></button>
+<button class="nav-item" data-view="catalog"><i data-lucide="store"></i><span>Menu Produk</span></button>
+<button class="nav-item" data-view="inventory" hidden=""><i data-lucide="boxes"></i><span>Stok Produk</span></button>
+<button class="nav-item" data-view="sales" hidden=""><i data-lucide="shopping-cart"></i><span>Kasir</span><span class="nav-count" id="cartCount">0</span></button>
+<button class="nav-item" data-view="history" hidden=""><i data-lucide="receipt-text"></i><span>Riwayat</span></button>
+<button class="nav-item" id="authNavButton" type="button"><i data-lucide="shield-check"></i><span>Login Admin</span></button>
+<button class="nav-item" data-view="developer"><i data-lucide="code-2"></i><span>Developer</span></button>
+</nav>
+<div class="sidebar-bottom">
+<div class="mini-card">
+<span class="mini-icon"><i data-lucide="database-zap"></i></span>
+<div><strong>Mode Simulasi</strong><span>Tanpa database</span></div>
+</div>
+<button class="reset-button" hidden="" id="resetData"><i data-lucide="rotate-ccw"></i><span>Reset Data Demo</span></button>
+</div>
+</aside>
+<button aria-hidden="true" aria-label="Tutup navigasi" class="sidebar-backdrop" id="sidebarBackdrop" type="button"></button>
+<main class="main-area">
+<header class="topbar">
+<button aria-label="Buka menu" class="icon-button mobile-only" id="menuToggle"><i data-lucide="menu"></i></button>
+<div class="breadcrumb"><span id="pageEyebrow">POINT OF SALE</span><strong id="pageTitle">Dashboard</strong></div>
+<div class="top-actions">
+<span class="role-chip" id="roleChip"><i data-lucide="user"></i><span>User</span></span>
+<div class="clock-chip"><i data-lucide="clock-3"></i><span id="liveClock"></span></div>
+<button aria-label="Aktifkan dark theme" aria-pressed="false" class="icon-button theme-toggle" id="themeToggle" title="Dark Theme" type="button">
+<i aria-hidden="true" data-lucide="moon" id="themeIcon"></i>
+</button>
+<button class="profile-chip" data-view="developer">
+<img alt="Avatar ridhoae303" src="assets/developer.jpg"/>
+<span><strong>ridhoae303</strong><small>Developer</small></span>
+</button>
+</div>
+</header>
+<section class="view active" id="view-dashboard">
+<div class="user-dashboard" id="userDashboard">
+<div class="hero panel reveal user-hero">
+<div class="hero-copy">
+<span class="eyebrow">CAFE / MINIMARKET</span>
+<h1>Pesan dengan <em>mudah.</em></h1>
+<p>Lihat katalog produk yang tersedia. Seluruh pemilihan pesanan, pembayaran, transaksi, dan cetak struk ditangani oleh Admin / Kasir.</p>
+<div class="hero-actions">
+<button class="primary-button" data-view="catalog"><i data-lucide="store"></i>Lihat Menu</button>
+<button class="secondary-button" data-view="developer"><i data-lucide="info"></i>Tentang Sistem</button>
+</div>
+</div>
+<div class="hero-art">
+<div class="hero-orbit orbit-1"></div><div class="hero-orbit orbit-2"></div>
+<div class="hero-cup"><i data-lucide="coffee"></i></div>
+<div class="floating-badge badge-top"><i data-lucide="shopping-bag"></i><span>Pilih Menu</span></div>
+<div class="floating-badge badge-bottom"><i data-lucide="receipt"></i><span>Transaksi Aman</span></div>
+</div>
+</div>
+<div class="dashboard-grid user-info-grid">
+<div class="panel quick-panel reveal">
+<div class="section-head"><div><span class="eyebrow">CUSTOMER AREA</span><h2>Yang bisa kamu lakukan</h2></div></div>
+<div class="quick-grid">
+<button class="quick-card q-one" data-view="catalog"><div class="quick-icon"><i data-lucide="store"></i></div><strong>Lihat Menu</strong><span>Melihat produk dan harga</span><i class="arrow" data-lucide="arrow-up-right"></i></button>
+<div class="quick-card role-info q-two"><div class="quick-icon"><i data-lucide="send"></i></div><strong>Checkout ke Kasir</strong><span>Checkout hanya mengirim pesanan ke antrean Kasir, tanpa pembayaran.</span></div>
+<div class="quick-card role-info q-three"><div class="quick-icon"><i data-lucide="receipt-text"></i></div><strong>Struk oleh Kasir</strong><span>Bukti transaksi dibuat dan dicetak dari area Kasir.</span></div>
+<button class="quick-card q-four" data-view="developer"><div class="quick-icon"><i data-lucide="code-2"></i></div><strong>Developer</strong><span>Lihat informasi pengembang sistem</span><i class="arrow" data-lucide="arrow-up-right"></i></button>
+</div>
+</div>
+<div class="panel recent-panel reveal-delay-2">
+<div class="section-head"><div><span class="eyebrow">TRANSACTION FLOW</span><h2>Alur Transaksi</h2></div><span class="filter-chip"><i data-lucide="lock-keyhole"></i><span>Admin Only</span></span></div>
+<div class="flow-list"><div class="flow-step"><span>01</span><div><strong>Pelanggan memilih produk</strong><small>Produk masuk ke keranjang pelanggan.</small></div></div><div class="flow-step"><span>02</span><div><strong>Pelanggan checkout</strong><small>Pesanan masuk ke antrean Kasir tanpa pembayaran.</small></div></div><div class="flow-step"><span>03</span><div><strong>Kasir menerima pembayaran</strong><small>Nominal, kembalian, dan validasi pembayaran diproses Admin.</small></div></div><div class="flow-step"><span>04</span><div><strong>Kasir mengeluarkan struk</strong><small>Bukti transaksi hanya tersedia dari area Admin.</small></div></div></div>
+</div>
+</div>
+</div>
+<div class="admin-dashboard" hidden="" id="adminDashboard">
+<div class="hero panel reveal">
+<div class="hero-copy">
+<span class="eyebrow">CAFÉ / MINIMARKET POS</span>
+<h1>Kasir yang terasa <em>cepat.</em></h1>
+<p>Kelola produk, stok, transaksi, dan cetak struk dari satu dashboard ringan tanpa database.</p>
+<div class="hero-actions">
+<button class="primary-button" data-view="sales"><i data-lucide="shopping-cart"></i>Buka Kasir</button>
+<button class="secondary-button" data-view="inventory"><i data-lucide="package-plus"></i>Kelola Stok</button>
+</div>
+</div>
+<div class="hero-art">
+<div class="hero-orbit orbit-1"></div><div class="hero-orbit orbit-2"></div>
+<div class="hero-cup"><i data-lucide="coffee"></i></div>
+<div class="floating-badge badge-top"><i data-lucide="sparkles"></i><span>Modern UI</span></div>
+<div class="floating-badge badge-bottom"><i data-lucide="printer"></i><span>Print Struk</span></div>
+</div>
+</div>
+<div class="stats-grid reveal-delay">
+<div class="stat-card panel"><div class="stat-icon icon-amber"><i data-lucide="package"></i></div><div><span>Total Produk</span><strong id="statProducts">0</strong><small>item tersimpan</small></div></div>
+<div class="stat-card panel"><div class="stat-icon icon-green"><i data-lucide="boxes"></i></div><div><span>Total Stok</span><strong id="statStock">0</strong><small>unit tersedia</small></div></div>
+<div class="stat-card panel"><div class="stat-icon icon-blue"><i data-lucide="receipt"></i></div><div><span>Transaksi</span><strong id="statTransactions">0</strong><small>riwayat tercatat</small></div></div>
+<div class="stat-card panel"><div class="stat-icon icon-purple"><i data-lucide="badge-dollar-sign"></i></div><div><span>Omzet</span><strong id="statRevenue">Rp0</strong><small>total penjualan</small></div></div>
+</div>
+<div class="dashboard-grid">
+<div class="panel quick-panel reveal">
+<div class="section-head"><div><span class="eyebrow">QUICK ACTIONS</span><h2>Mulai dari sini</h2></div></div>
+<div class="quick-grid">
+<button class="quick-card q-one" data-view="sales"><div class="quick-icon"><i data-lucide="shopping-bag"></i></div><strong>Transaksi Baru</strong><span>Tambah item dan bayar</span><i class="arrow" data-lucide="arrow-up-right"></i></button>
+<button class="quick-card q-two" data-view="inventory"><div class="quick-icon"><i data-lucide="package-plus"></i></div><strong>Tambah Produk</strong><span>Isi katalog dan stok</span><i class="arrow" data-lucide="arrow-up-right"></i></button>
+<button class="quick-card q-three" data-view="history"><div class="quick-icon"><i data-lucide="history"></i></div><strong>Lihat Riwayat</strong><span>Cek transaksi sebelumnya</span><i class="arrow" data-lucide="arrow-up-right"></i></button>
+<button class="quick-card q-four" data-view="developer"><div class="quick-icon"><i data-lucide="code-2"></i></div><strong>Developer</strong><span>Profil &amp; contributor API</span><i class="arrow" data-lucide="arrow-up-right"></i></button>
+</div>
+</div>
+<div class="panel recent-panel reveal-delay-2">
+<div class="section-head"><div><span class="eyebrow">RECENT SALES</span><h2>Transaksi terbaru</h2></div><button class="text-button" data-view="history">Lihat semua <i data-lucide="arrow-right"></i></button></div>
+<div class="compact-list" id="recentSales"></div>
+</div>
+</div>
+</div></section>
+<section class="view" id="view-catalog">
+<div class="page-head reveal"><div><span class="eyebrow">PRODUCT CATALOG</span><h1>Menu Produk</h1><p>Pilih produk untuk dimasukkan ke keranjang. Checkout hanya mengirim pesanan ke Kasir / Admin.</p></div><span class="filter-chip"><i data-lucide="shopping-cart"></i><span>Keranjang Pelanggan</span></span></div>
+<div class="customer-developer-card panel reveal-delay" aria-label="Developer sistem">
+  <div class="customer-developer-avatar"><img src="assets/developer.jpg" alt="ridhoae303" loading="lazy"></div>
+  <div class="customer-developer-copy"><span class="eyebrow">DEVELOPER</span><strong>ridhoae303</strong><span>Developer sistem CafeBilling</span></div>
+  <div class="customer-developer-badge"><i data-lucide="code-2"></i><span>System Developer</span></div>
+</div>
+<div class="panel catalog-panel reveal-delay">
+<div class="section-head"><div><span class="eyebrow">AVAILABLE PRODUCTS</span><h2>Katalog</h2><p>Kamu bisa memilih produk dan memasukkannya ke keranjang. Pembayaran tetap ditangani Admin / Kasir.</p></div><div class="search-box small"><i data-lucide="search"></i><input id="catalogSearch" placeholder="Cari produk..."/></div></div>
+<div class="category-row" id="catalogCategoryRow"></div>
+<div class="catalog-grid" id="catalogGrid"></div>
+<div class="customer-order-panel panel">
+<div class="section-head"><div><span class="eyebrow">CUSTOMER CART</span><h2>Keranjang Pesanan</h2><p>Checkout tidak membayar. Pesanan hanya dikirim ke Kasir / Admin.</p></div><button class="icon-button danger-soft" id="clearCustomerCart" title="Kosongkan keranjang"><i data-lucide="trash-2"></i></button></div>
+<div class="cart-items" id="customerCartItems"></div>
+<div class="cart-summary"><div><span>Subtotal</span><strong id="customerCartSubtotal">Rp0</strong></div><div><span>Pajak</span><strong id="customerCartTax">Rp0</strong></div><div class="grand"><span>Total Pesanan</span><strong id="customerCartTotal">Rp0</strong></div><button class="primary-button checkout-button" id="customerCheckoutButton" type="button"><i data-lucide="send"></i>Checkout ke Kasir</button></div>
+</div>
+<div class="panel customer-history-panel reveal-delay-2 user-only">
+  <div class="section-head">
+    <div><span class="eyebrow">CUSTOMER ACTIVITY</span><h2>History Checkout</h2><p>Pesanan yang sudah dikirim ke kasir dapat diubah maksimal 5 menit sejak checkout.</p></div>
+    <span class="filter-chip"><i data-lucide="timer-reset"></i><span>Batas edit 5 menit</span></span>
+  </div>
+  <div class="customer-history-list" id="customerHistoryList"></div>
+</div>
+</div>
+</section>
+<section class="view" id="view-inventory">
+<div class="page-head reveal"><div><span class="eyebrow">PRODUCT MANAGEMENT</span><h1>Stok Produk</h1><p>Kelola katalog produk dan jumlah stok secara lokal.</p></div><button class="primary-button" id="openProductModal"><i data-lucide="plus"></i>Tambah Produk</button></div>
+<div class="panel table-panel reveal-delay"><div class="table-tools"><div class="search-box"><i data-lucide="search"></i><input id="inventorySearch" placeholder="Cari nama atau kategori..."/></div><div class="filter-chip"><i data-lucide="boxes"></i><span id="inventoryCount">0 produk</span></div></div><div class="table-wrap"><table><thead><tr><th>Produk</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="inventoryBody"></tbody></table></div></div>
+</section><section class="view" id="view-sales">
+<div class="page-head reveal"><div><span class="eyebrow">ADMIN / KASIR</span><h1>Kasir &amp; Pembayaran</h1><p>Terima pesanan pelanggan, kelola keranjang kasir, terima pembayaran, dan keluarkan struk dari sini.</p></div><div class="sales-shortcut"><span>Shortcut</span><kbd>Ctrl</kbd><kbd>K</kbd></div></div>
+<div class="sales-layout">
+<div class="panel product-browser reveal"><div class="pending-orders-panel"><div class="section-head"><div><span class="eyebrow">CUSTOMER ORDERS</span><h2>Pesanan Masuk</h2><p>Checkout pelanggan menunggu di sini. Pembayaran tetap dilakukan kasir.</p></div><span class="filter-chip"><i data-lucide="inbox"></i><span id="pendingOrderCount">0 pesanan</span></span></div><div id="pendingOrders" class="pending-orders-list"></div></div><div class="section-head"><div><span class="eyebrow">PRODUCTS</span><h2>Pilih Produk</h2></div><div class="search-box small"><i data-lucide="search"></i><input id="salesSearch" placeholder="Cari produk..."/></div></div><div class="category-row" id="categoryRow"></div><div class="product-grid" id="productGrid"></div></div>
+<aside class="panel cart-panel reveal-delay"><div class="section-head"><div><span class="eyebrow">CASHIER ORDER</span><h2>Keranjang Kasir</h2></div><button class="icon-button danger-soft" id="clearCart" title="Kosongkan keranjang"><i data-lucide="trash-2"></i></button></div><div class="cart-items" id="cartItems"></div><div class="cart-summary"><div><span>Subtotal</span><strong id="cartSubtotal">Rp0</strong></div><div><span>Pajak</span><strong id="cartTax">Rp0</strong></div><div class="grand"><span>Total</span><strong id="cartTotal">Rp0</strong></div><div class="cash-row"><label for="cashAmount">Nominal Pembayaran (Admin / Kasir)</label><input id="cashAmount" inputmode="numeric" placeholder="Masukkan nominal pembayaran"/><div class="change"><span>Kembalian</span><strong id="cashChange">Rp0</strong></div></div><button class="primary-button checkout-button" id="checkoutButton"><i data-lucide="printer"></i>Simpan Pembayaran &amp; Cetak Struk</button></div></aside>
+</div>
+</section><section class="view" id="view-history">
+<div class="page-head reveal"><div><span class="eyebrow">SALES HISTORY</span><h1>Riwayat Transaksi</h1><p>Semua transaksi simulasi yang pernah disimpan.</p></div><div class="filter-chip"><i data-lucide="archive"></i><span id="historyCount">0 transaksi</span></div></div>
+<div class="panel table-panel reveal-delay"><div class="table-tools"><div class="search-box"><i data-lucide="search"></i><input id="historySearch" placeholder="Cari ID atau waktu..."/></div></div><div class="table-wrap"><table><thead><tr><th>ID Transaksi</th><th>Waktu</th><th>Item</th><th>Total</th><th>Pembayaran</th><th>Aksi</th></tr></thead><tbody id="historyBody"></tbody></table></div></div>
+</section><section class="view" id="view-developer">
+<div class="developer-hero panel reveal">
+<div class="developer-avatar-wrap"><div class="avatar-glow"></div><button aria-label="Preview foto developer" class="image-preview-button avatar-preview" data-preview-alt="Foto developer ridhoae303" data-preview-src="assets/developer.jpg" type="button"><i data-lucide="maximize-2"></i></button><img alt="Foto developer ridhoae303" class="developer-avatar" id="developerAvatar" src="assets/developer.jpg"/></div>
+<div class="developer-copy"><span class="eyebrow">ABOUT THE DEVELOPER</span><h1>ridhoae303</h1><p>I build little things that look clean, feel fast, and do not get in the way.</p><div class="developer-actions"><a class="primary-button" href="https://github.com/ridhoae303" rel="noopener" target="_blank"><i data-lucide="github"></i>GitHub Profile</a><button class="secondary-button" id="refreshContributors"><i data-lucide="refresh-cw"></i>Refresh Contributor</button></div></div>
+<div class="developer-meta"><div><span>Repository</span><strong>CafeBilling</strong></div><div><span>Mode</span><strong>Frontend + LocalStorage</strong></div><div><span>API</span><strong>GitHub Contributors</strong></div></div>
+</div>
+<div class="developer-grid">
+<div class="panel contributor-panel reveal-delay"><div class="section-head"><div><span class="eyebrow">GITHUB API</span><h2>Contributor Repository</h2><p>Data dibaca langsung dari repository GitHub.</p></div><span class="api-status" id="apiStatus"><i data-lucide="loader-circle"></i> Memuat</span></div><div class="contributor-list" id="contributorList"></div></div>
+<div class="panel stack-panel reveal-delay-2"><div class="section-head"><div><span class="eyebrow">TECH STACK</span><h2>Teknologi</h2></div></div><div class="stack-item"><i data-lucide="file-code-2"></i><div><strong>HTML5</strong><span>Struktur halaman</span></div></div><div class="stack-item"><i data-lucide="palette"></i><div><strong>CSS3</strong><span>Responsive UI &amp; animation</span></div></div><div class="stack-item"><i data-lucide="braces"></i><div><strong>JavaScript</strong><span>POS logic &amp; LocalStorage</span></div></div></div>
+</div>
+</section><footer class="footer"><span>© 2026 by ridhoae303!</span><span>Built for fun &amp; shipped with caffeine</span></footer></main></div>
+
+
+
+
+
+
+
+<div aria-hidden="true" class="modal-backdrop image-preview-modal" id="imagePreviewModal"><div class="image-preview-shell"><div class="image-preview-head"><span class="eyebrow">IMAGE PREVIEW</span><button aria-label="Tutup preview" class="icon-button" id="closeImagePreview" type="button"><i data-lucide="x"></i></button></div><div class="image-preview-stage"><img alt="" id="imagePreview"/></div><div class="image-preview-caption" id="imagePreviewCaption"></div></div></div>
+<div aria-hidden="true" class="modal-backdrop receipt-preview-modal" id="receiptPreviewModal">
+<div aria-labelledby="receiptPreviewTitle" aria-modal="true" class="receipt-preview-shell" role="dialog">
+<div class="modal-head receipt-preview-head">
+<div>
+<span class="eyebrow">PAYMENT RECEIPT</span>
+<h2 id="receiptPreviewTitle">Bukti Pembayaran</h2>
+<p class="modal-description">Transaksi berhasil. Bukti transaksi hanya dapat dibuat dan dikeluarkan dari area Admin / Kasir.</p>
+</div>
+<button aria-label="Tutup preview" class="icon-button" id="closeReceiptPreview" type="button"><i data-lucide="x"></i></button>
+</div>
+<div class="receipt-preview-content" id="receiptPreviewContent"></div>
+<div class="modal-actions receipt-preview-actions">
+<button class="secondary-button" id="printReceipt" type="button"><i data-lucide="printer"></i>Cetak</button>
+<button class="primary-button" id="downloadReceipt" type="button"><i data-lucide="download"></i>Download Bukti</button>
+</div>
+</div>
+</div>
+<div class="modal-backdrop" id="productModal"><div class="modal"><div class="modal-head"><div><span class="eyebrow">PRODUCT FORM</span><h2 id="productModalTitle">Tambah Produk</h2></div><button class="icon-button" data-close-modal="productModal"><i data-lucide="x"></i></button></div><form id="productForm"><input id="productId" type="hidden"/><div class="form-grid"><label>Nama Produk<input id="productName" required=""/></label><label>Kategori<select id="productCategory" required=""><option value="Kopi">Kopi</option><option value="Minuman">Minuman</option><option value="Makanan">Makanan</option><option value="Snack">Snack</option><option value="Lainnya">Lainnya</option></select></label><label>Harga<input id="productPrice" min="0" required="" type="number"/></label><label>Stok<input id="productStock" min="0" required="" type="number"/></label><label class="full">URL Gambar<input id="productImage" inputmode="url" placeholder="https://..."/></label><div class="product-image-check" id="productImageCheck" hidden><div class="product-image-check-media"><img id="productImagePreview" alt="Pratinjau gambar produk"/></div><div class="product-image-check-copy"><strong id="productImageCheckTitle">Pratinjau gambar</strong><span id="productImageCheckStatus">Masukkan URL HTTPS untuk memeriksa gambar.</span></div></div></div><div class="modal-actions"><button class="secondary-button" data-close-modal="productModal" type="button">Batal</button><button class="primary-button" type="submit"><i data-lucide="save"></i>Simpan Produk</button></div></form></div></div>
+<div aria-hidden="true" class="modal-backdrop" id="loginModal">
+<div aria-labelledby="loginModalTitle" aria-modal="true" class="modal login-modal" role="dialog">
+<div class="modal-head">
+<div><span class="eyebrow">ADMIN ACCESS</span><h2 id="loginModalTitle">Login Admin</h2><p class="modal-description">Masuk untuk mengelola produk, stok, dan data operasional.</p></div>
+<button aria-label="Tutup login" class="icon-button" id="closeLoginModal" type="button"><i data-lucide="x"></i></button>
+</div>
+<form autocomplete="on" id="loginForm">
+<div class="form-grid login-grid">
+<label class="full">Username<input autocomplete="username" id="adminUsername" name="username" required=""/></label>
+<label class="full password-field">Password<div class="password-input-wrap"><input autocomplete="current-password" id="adminPassword" name="password" required="" type="password"/><button aria-label="Tampilkan password" aria-pressed="false" class="password-toggle icon-button" id="toggleAdminPassword" title="Tampilkan password" type="button"><i data-lucide="eye"></i></button></div></label>
+</div>
+<div aria-live="polite" class="login-status" id="loginStatus"></div>
+<div class="modal-actions">
+<button class="secondary-button" id="cancelLogin" type="button">Batal</button>
+<button class="primary-button" type="submit"><i data-lucide="log-in"></i>Masuk sebagai Admin</button>
+</div>
+</form>
+</div>
+</div>
+<div aria-hidden="true" class="modal-backdrop" id="checkoutEditModal">
+<div aria-labelledby="checkoutEditTitle" aria-modal="true" class="modal checkout-edit-modal" role="dialog">
+<div class="modal-head">
+<div><span class="eyebrow">CHECKOUT EDIT</span><h2 id="checkoutEditTitle">Edit History Checkout</h2><p class="modal-description" id="checkoutEditDescription">Ubah jumlah item sebelum batas waktu berakhir.</p></div>
+<button aria-label="Tutup edit checkout" class="icon-button" id="closeCheckoutEdit" type="button"><i data-lucide="x"></i></button>
+</div>
+<div class="checkout-edit-banner"><i data-lucide="clock-3"></i><div><strong id="checkoutEditTimer">05:00</strong><span>Waktu edit tersisa</span></div></div>
+<div class="checkout-edit-pricing" aria-live="polite"><div class="checkout-edit-price-card"><span>Sebelum</span><strong id="checkoutEditOldTotal">Rp0</strong></div><div class="checkout-edit-price-card"><span>Sesudah</span><strong id="checkoutEditNewTotal">Rp0</strong></div><div class="checkout-edit-price-card"><span>Perubahan</span><strong class="checkout-edit-diff neutral" id="checkoutEditDifference">Tidak ada perubahan</strong></div></div><div class="checkout-edit-list" id="checkoutEditList"></div>
+<div class="modal-actions"><button class="secondary-button" id="cancelCheckoutEdit" type="button">Batal</button><button class="primary-button" id="saveCheckoutEdit" type="button"><i data-lucide="send"></i>Kirim Perubahan ke Kasir</button></div>
+</div>
+</div>
+<div aria-hidden="true" class="modal-backdrop" id="confirmModal">
+<div aria-labelledby="confirmModalTitle" aria-modal="true" class="modal confirm-modal" role="dialog">
+<div class="confirm-icon"><i data-lucide="shield-alert"></i></div>
+<div class="modal-head confirm-head"><div><span class="eyebrow">SYSTEM CONFIRMATION</span><h2 id="confirmModalTitle">Konfirmasi</h2><p class="modal-description" id="confirmModalMessage"></p></div><button aria-label="Tutup konfirmasi" class="icon-button" id="closeConfirmModal" type="button"><i data-lucide="x"></i></button></div>
+<div class="modal-actions"><button class="secondary-button" id="cancelConfirmModal" type="button">Batal</button><button class="primary-button" id="confirmModalAction" type="button">Lanjutkan</button></div>
+</div>
+</div>
+<div class="toast-container" id="toastContainer"></div>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="data/admin-config.js"></script>
+<script src="js/app.js?v=20260904-role-pos-v3"></script>
+</body>
+</html>
